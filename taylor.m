@@ -40,6 +40,8 @@ pretty(T_poly);
 disp('----------------------------------------------------------');
 disp('Integrando el polinomio...');
 I_poly = int(T_poly, x);
+disp('Integral indefinida del polinomio:');
+pretty(I_poly);
 
 % 5. EVALUACIÓN (Teorema Fundamental del Cálculo)
 % Sustituimos b y a en la integral
