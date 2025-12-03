@@ -1,6 +1,13 @@
 
 clc; clear; close all;
 
+% Configurar archivo de registro en el Escritorio
+logFile = fullfile(getenv('HOME'), 'Desktop', 'taylor_process_log.txt');
+if exist(logFile, 'file')
+    delete(logFile);
+end
+diary(logFile);
+
 % --- CARGAR PAQUETE SIMBÓLICO (Solo para GNU Octave) ---
 % Si usas MATLAB, puedes comentar o borrar las siguientes 3 líneas.
 try
@@ -57,11 +64,10 @@ fprintf('RESULTADO FINAL (Evaluado de %.4g a %.4g):\n', a, b);
 fprintf('Area Aproximada = %.8g\n', area_aprox);
 disp('----------------------------------------------------------');
 
-% Opcional: Graficar para verificar visualmente
-fplot(T_poly, [min(a, -1), max(b, 1)]);
-hold on;
-title(['Aproximación de Taylor (Grado ' num2str(n) ')']);
-xlabel('x'); ylabel('y');
-grid on;
-legend('Polinomio Taylor');
+% plot_taylor(T_poly, a, b, n);
+
+diary off;
+disp(['Proceso guardado en: ' logFile]);
+
+
 
